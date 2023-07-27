@@ -17,6 +17,9 @@ namespace SpaceDefence
         [Header("Angular velocity")]
         [SerializeField] private float m_MaxAngularVelocity;
 
+        [Header("Space ship")]
+        [SerializeField] private float m_Mass;
+
         private Rigidbody2D m_Rigid;
 
         public float ThrustControl { get; set; }
@@ -25,6 +28,7 @@ namespace SpaceDefence
         private void Start()
         {
             m_Rigid = GetComponent<Rigidbody2D>();
+            m_Rigid.mass = m_Mass;
         }
 
         private void FixedUpdate()
