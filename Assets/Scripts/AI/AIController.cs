@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SpaceDefence
 {
-    [RequireComponent(typeof(SpaceShip))]
+    [RequireComponent(typeof(SpaceShip), typeof(CircleArea))]
     public class AIController : MonoBehaviour
     {
         public enum AIBehaviour
@@ -70,7 +70,7 @@ namespace SpaceDefence
         {
             ActionFindNewMovePosition();
             ActionControlShip();
-            //ActionFindNewAttackTarget();
+            ActionFindNewAttackTarget();
             //ActionFire();
             ActionEvadeCollision();
         }
@@ -129,46 +129,46 @@ namespace SpaceDefence
             return -angle;
         }
 
-        //private void ActionFindNewAttackTarget()
-        //{
-        //    if (m_FindNewTargetTimer.IsFinished == true)
-        //    {
-        //        m_SelectedTarget = FindNearestDestructibleTarget();
+        private void ActionFindNewAttackTarget()
+        {
+            if (m_FindNewTargetTimer.IsFinished == true)
+            {
+                m_SelectedTarget = FindNearestDestructibleTarget();
 
-        //        m_FindNewTargetTimer.Start(m_ShootDelay);
-        //    }
-        //}
+                m_FindNewTargetTimer.Start(m_ShootDelay);
+            }
+        }
 
-        //private Destructible FindNearestDestructibleTarget()
-        //{
-        //    float maxDist = float.MaxValue;
+        private Destructible FindNearestDestructibleTarget()
+        {
+            float maxDist = float.MaxValue;
 
-        //    Destructible potentialTarget = null;
+            Destructible potentialTarget = null;
 
-        //    foreach (var v in Destructible.AllDestructibles)
-        //    {
-        //        if (v.GetComponent<SpaceShip>() == m_SpaceShip) continue;
-        //        if (v.TeamId == Destructible.TeamIdNeutral) continue;
-        //        if (v.TeamId == m_SpaceShip.TeamId) continue;
+            foreach (var v in Destructible.AllDestructibles)
+            {
+                if (v.GetComponent<SpaceShip>() == m_SpaceShip) continue;
+                if (v.TeamId == Destructible.TeamIdNeutral) continue;
+                if (v.TeamId == m_SpaceShip.TeamId) continue;
 
-        //        float dist = Vector2.Distance(m_SpaceShip.transform.position, v.transform.position);
+                float dist = Vector2.Distance(m_SpaceShip.transform.position, v.transform.position);
 
-        //        if (dist < maxDist)
-        //        {
-        //            maxDist = dist;
-        //            potentialTarget = v;
-        //        }
-        //    }
+                if (dist < maxDist)
+                {
+                    maxDist = dist;
+                    potentialTarget = v;
+                }
+            }
 
-        //    bool isInsidePatrolZone = (transform.position - potentialTarget.transform.position).sqrMagnitude < m_CircleArea.Radius * m_CircleArea.Radius;
+            bool isInsidePatrolZone = (transform.position - potentialTarget.transform.position).sqrMagnitude < m_CircleArea.Radius * m_CircleArea.Radius;
 
-        //    if (isInsidePatrolZone)
-        //    {
-        //        return potentialTarget;
-        //    }
+            if (isInsidePatrolZone)
+            {
+                return potentialTarget;
+            }
 
-        //    return null;
-        //}
+            return null;
+        }
 
         //private void ActionFire()
         //{

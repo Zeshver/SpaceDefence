@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4888638522472581428}
   - component: {fileID: 8338840323408683247}
   - component: {fileID: 3397857152273743018}
+  - component: {fileID: 1696757957722603819}
+  - component: {fileID: 6804641058275967391}
   m_Layer: 0
   m_Name: Patrol Ship
   m_TagString: Untagged
@@ -78,11 +80,16 @@ MonoBehaviour:
   m_Indestructible: 0
   m_HitPoints: 10
   m_MaxHitPoints: 10
-  m_Thrust: 5
+  m_TeamId: 0
+  m_Thrust: 8
   m_Mobility: 100
-  m_LinearVelocity: 10
-  m_MaxAngularVelocity: 200
+  m_LinearVelocity: 1
+  m_MaxAngularVelocity: 50
   m_Mass: 1
+  m_MaxAmmo: 0
+  m_MaxEnergy: 0
+  m_EnergyRegenPerSecond: 0
+  m_Turrets: []
 --- !u!114 &3397857152273743018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,10 +107,73 @@ MonoBehaviour:
   m_RandomSelectMovePointTime: 5
   m_FindNewTargetTime: 0
   m_ShootDelay: 0
-  m_EvadeRayLenght: 2
+  m_EvadeRayLenght: 5
   m_NavigationLinear: 1
   m_NavigationAngular: 1
-  m_Coef: 0
+  m_Coef: 2
+--- !u!114 &1696757957722603819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079214126043634030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b02975fac3982e48a6cf27d33c10ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: 10
+--- !u!60 &6804641058275967391
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079214126043634030}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.00000009872019, y: 0.17145169}
+      - {x: -0.13515788, y: 0.07499939}
+      - {x: -0.13239977, y: -0.13226396}
+      - {x: 0.14504972, y: -0.15123802}
+      - {x: 0.14780724, y: 0.09397414}
+  m_UseDelaunayMesh: 0
 --- !u!1 &4419402239521186084
 GameObject:
   m_ObjectHideFlags: 0
