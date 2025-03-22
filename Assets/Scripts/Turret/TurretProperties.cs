@@ -8,6 +8,7 @@ namespace SpaceDefence
         Secondary
     }
 
+    [CreateAssetMenu]
     public sealed class TurretProperties : ScriptableObject
     {
         [SerializeField] private TurretMode m_TurretMode;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SpaceDefence
 {
@@ -9,11 +10,27 @@ namespace SpaceDefence
         [SerializeField] private int m_HitPoints;
         [SerializeField] private int m_MaxHitPoints;
 
+        [SerializeField] private UnityEvent m_EventOnDeath;
+        public UnityEvent EventOnDeath => m_EventOnDeath;
+
         public void ApplyDamage(int damage)
         {
             if (m_Indestructible) return;
 
             m_HitPoints -= damage;
+
+            if (m_HitPoints <= 0)
+            {
+                OnDeath();
+            }
+        }
+
+        protected virtual void OnDeath()
+        {
+            m_AllDestructibles.Remove(this);
+            Destroy(gameObject);
+
+            m_EventOnDeath?.Invoke();
         }
 
         [SerializeField] private static HashSet<Destructible> m_AllDestructibles;

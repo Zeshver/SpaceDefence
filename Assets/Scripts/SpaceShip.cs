@@ -122,6 +122,17 @@ namespace SpaceDefence
                 m_Turrets[i].AssignLoadout(props);
             }
         }
+
+        public void Fire(TurretMode mode)
+        {
+            for (int i = 0; i < m_Turrets.Length; i++)
+            {
+                if (m_Turrets[i].Mode == mode)
+                {
+                    m_Turrets[i].Fire();
+                }
+            }
+        }
         #endregion
     }
 }

@@ -71,7 +71,7 @@ namespace SpaceDefence
             ActionFindNewMovePosition();
             ActionControlShip();
             ActionFindNewAttackTarget();
-            //ActionFire();
+            ActionFire();
             ActionEvadeCollision();
         }
 
@@ -160,28 +160,31 @@ namespace SpaceDefence
                 }
             }
 
-            bool isInsidePatrolZone = (transform.position - potentialTarget.transform.position).sqrMagnitude < m_CircleArea.Radius * m_CircleArea.Radius;
-
-            if (isInsidePatrolZone)
+            if (potentialTarget)
             {
-                return potentialTarget;
+                bool isInsidePatrolZone = (transform.position - potentialTarget.transform.position).sqrMagnitude < m_CircleArea.Radius * m_CircleArea.Radius;
+
+                if (isInsidePatrolZone)
+                {
+                    return potentialTarget;
+                }
             }
 
             return null;
         }
 
-        //private void ActionFire()
-        //{
-        //    if (m_SelectedTarget != null)
-        //    {
-        //        if (m_FireTimer.IsFinished == true)
-        //        {
-        //            m_SpaceShip.Fire(TurretMode.Primary);
+        private void ActionFire()
+        {
+            if (m_SelectedTarget != null)
+            {
+                if (m_FireTimer.IsFinished == true)
+                {
+                    m_SpaceShip.Fire(TurretMode.Primary);
 
-        //            m_FireTimer.Start(m_ShootDelay);
-        //        }
-        //    }
-        //}
+                    m_FireTimer.Start(m_ShootDelay);
+                }
+            }
+        }
 
         private void ActionEvadeCollision()
         {

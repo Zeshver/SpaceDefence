@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1263940621171170014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7948571005909267066}
+  - component: {fileID: 9065871509970956908}
+  m_Layer: 0
+  m_Name: TurretPrimary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7948571005909267066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263940621171170014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8717749686822480905}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9065871509970956908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263940621171170014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11e14afe5064174587c0726c80fb851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TurretMode: 0
+  m_AudioSource: {fileID: 0}
+  m_AudioClip: []
+  m_TurretProperties: {fileID: 11400000, guid: ad394d54024e18743b4e671f3d962d47, type: 2}
 --- !u!1 &3079214126043634030
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +81,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7948571005909267066}
   - {fileID: 1508227181390759017}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,18 +127,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Nickname: 
   m_Indestructible: 0
-  m_HitPoints: 10
-  m_MaxHitPoints: 10
+  m_HitPoints: 1
+  m_MaxHitPoints: 1
+  m_EventOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   m_TeamId: 0
   m_Thrust: 8
   m_Mobility: 100
   m_LinearVelocity: 1
-  m_MaxAngularVelocity: 50
+  m_MaxAngularVelocity: 200
   m_Mass: 1
-  m_MaxAmmo: 0
-  m_MaxEnergy: 0
-  m_EnergyRegenPerSecond: 0
-  m_Turrets: []
+  m_MaxAmmo: 50
+  m_MaxEnergy: 50
+  m_EnergyRegenPerSecond: 2
+  m_Turrets:
+  - {fileID: 9065871509970956908}
 --- !u!114 &3397857152273743018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,13 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AIBehaviour: 1
   m_Point: {fileID: 0}
-  m_RandomSelectMovePointTime: 5
-  m_FindNewTargetTime: 0
-  m_ShootDelay: 0
+  m_RandomSelectMovePointTime: 2
+  m_FindNewTargetTime: 3
+  m_ShootDelay: 1
   m_EvadeRayLenght: 5
   m_NavigationLinear: 1
   m_NavigationAngular: 1
-  m_Coef: 2
+  m_Coef: 1
 --- !u!114 &1696757957722603819
 MonoBehaviour:
   m_ObjectHideFlags: 0
